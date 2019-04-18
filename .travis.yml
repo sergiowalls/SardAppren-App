@@ -1,5 +1,14 @@
 language: android
-jdk: openjdk12
+jdk:
+  - openjdk12
+  - openjdk11
+  - openjdk10
+  - openjdk9
+  - openjdk8
+  - oraclejdk11
+  - oraclejdk10
+  - oraclejdk9
+  - oraclejdk8
 
 android:
   components:
