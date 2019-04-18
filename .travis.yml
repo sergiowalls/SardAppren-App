@@ -9,6 +9,7 @@ android:
 before_install:
   - nvm install "10.15"
   - npm install -g react-native-cli
+  - chmod +x ./android/gradlew
 
 script:
   - cd android
