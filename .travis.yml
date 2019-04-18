@@ -1,0 +1,10 @@
+language: android
+jdk: oraclejdk12
+
+before_install:
+  - npm install -g react-native-cli
+
+script:
+  - cd android
+  - ./gradlew clean
+  - ./gradlew assemblDebug
