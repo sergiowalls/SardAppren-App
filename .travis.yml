@@ -1,0 +1,19 @@
+language: android
+jdk: openjdk12
+
+android:
+  components:
+    - build-tools-28.0.3
+    - android-28
+
+before_install:
+  - nvm install "10.15"
+  - npm install -g react-native-cli
+  - chmod +x ./android/gradlew
+
+script:
+  - npm install
+  - npm test
+  - cd android
+  - ./gradlew clean
+  - ./gradlew assembleDebug
