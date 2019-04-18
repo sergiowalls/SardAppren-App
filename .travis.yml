@@ -13,6 +13,7 @@ before_install:
 
 script:
   - npm install
+  - npm test
   - cd android
   - ./gradlew clean
-  - ./gradlew assemblDebug
+  - ./gradlew assembleDebug
