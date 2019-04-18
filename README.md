@@ -1,5 +1,7 @@
 # README
 
+Now on branch `master` [![Build Status](https://travis-ci.com/sergiowalls/SardAppren-App.svg?branch=master)](https://travis-ci.com/sergiowalls/SardAppren-App)
+
 ## Environment setup
 
 Install Python, Node.js and Java Development Kit:
@@ -8,7 +10,7 @@ Install Python, Node.js and Java Development Kit:
 * [Node.js 10.15 LTS 64 bits](https://nodejs.org/es/download/)
 * [JDK 12](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html)
 
-Although last JDK version is recommended this project can run with JDK 8 or newer versions. 
+Although last JDK version is recommended, this project can run with JDK 8 or newer versions. Same happens with Python, Python 2 and 3 are supported.  
 
 Next install React Native CLI with `npm install -g react-native-cli`.
 
