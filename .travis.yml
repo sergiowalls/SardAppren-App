@@ -12,6 +12,7 @@ before_install:
   - chmod +x ./android/gradlew
 
 script:
+  - npm install
   - cd android
   - ./gradlew clean
   - ./gradlew assemblDebug
