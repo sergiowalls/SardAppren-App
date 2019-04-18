@@ -1,5 +1,11 @@
 language: android
 jdk: openjdk12
+node_js: "10.15"
+
+android:
+  components:
+    - build-tools-28.0.3
+    - android-28
 
 before_install:
   - npm install -g react-native-cli
