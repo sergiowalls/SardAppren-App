@@ -15,11 +15,14 @@ export default class App extends Component<Props> {
 
     constructor(props: P, context: any) {
         super(props, context);
-        this.state = {playSeconds: 0, beats: 0, points: 0, backgroundColor: '#F5FCFF'};
+        this.state = {playSeconds: 0, beats: 0, points: 0, backgroundColor: '#F5FCFF', curtsCount: 0, llargsCount: 0};
+
 
         this.stopCounting = this.stopCounting.bind(this);
         this.beatIt = this.beatIt.bind(this);
         this.getContainerStyles = this.getContainerStyles.bind(this);
+        this.beatItCurts = this.beatItCurts.bind(this);
+        this.beatItLlargs = this.beatItLlargs.bind(this);
     }
 
     componentDidMount(): void {
@@ -41,7 +44,13 @@ export default class App extends Component<Props> {
                 <Text>{currentTimeString}</Text>
                 <Text>{this.state.beats}</Text>
                 <Text>{this.state.points}</Text>
-                <Button onPress={this.beatIt} title='¡Beat it!'/>
+
+                <Button onPress={this.beatItCurts} title='Curts'/>
+                <Button onPress={this.beatItLlargs} title='Llargs'/>
+                <Text> Curts: {this.state.curtsCount}</Text>
+                <Text> Llargs: {this.state.llargsCount}</Text>
+
+
             </View>
         );
     }
@@ -74,6 +83,18 @@ export default class App extends Component<Props> {
             this.addPoint();
         else
             this.substractPoint();
+    }
+
+    beatItCurts() {
+        this.setState({curtsCount: this.state.curtsCount + 1})
+        this.setState({llargsCount: 0})
+        this.beatIt()
+    }
+
+    beatItLlargs() {
+        this.setState({llargsCount: this.state.llargsCount + 1})
+        this.setState({curtsCount: 0})
+        this.beatIt()
     }
 
     addPoint() {
@@ -110,4 +131,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: 10,
     }
+
 });
