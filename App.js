@@ -7,43 +7,107 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import {Button, StyleSheet, Text, View} from 'react-native';
+import Sound from "react-native-sound";
 
 type Props = {};
 export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
-  }
+
+    constructor(props: P, context: any) {
+        super(props, context);
+        this.state = {playSeconds: 0, beats: 0, points: 0, backgroundColor: '#F5FCFF'};
+
+        this.stopCounting = this.stopCounting.bind(this);
+        this.beatIt = this.beatIt.bind(this);
+        this.getContainerStyles = this.getContainerStyles.bind(this);
+    }
+
+    componentDidMount(): void {
+        const sound = new Sound('sardana1.mp3', Sound.MAIN_BUNDLE, error => {
+            if (error)
+                console.log(error);
+            this.playSound(sound);
+        });
+
+    }
+
+    render() {
+        const currentTimeString = this.getAudioTimeString(this.state.playSeconds);
+
+        return (
+            <View style={this.getContainerStyles()}>
+                <Text style={styles.welcome}>SardAppren</Text>
+                <Text>Benvingut</Text>
+                <Text>{currentTimeString}</Text>
+                <Text>{this.state.beats}</Text>
+                <Text>{this.state.points}</Text>
+                <Button onPress={this.beatIt} title='¡Beat it!'/>
+            </View>
+        );
+    }
+
+    playSound(sound) {
+        sound.play(this.stopCounting);
+        this.secondsInterval = setInterval(() => {
+            sound.getCurrentTime((seconds) => {
+                this.countBeats(seconds);
+                this.setState({playSeconds: seconds})
+            })
+        }, 100);
+    }
+
+    countBeats(seconds) {
+        const beats = Math.max(Math.trunc((seconds - 5.219) / (53 / 60)), 0);
+        this.setState({beats: beats})
+    }
+
+    stopCounting() {
+        clearInterval(this.secondsInterval);
+    }
+
+    beatIt() {
+        let number = this.state.playSeconds - 5.219;
+        const nearestMultiple = Math.ceil(number / (53 / 60)) * (53 / 60);
+
+        let difference = Math.abs(number - nearestMultiple);
+        if (difference < 0.5)
+            this.addPoint();
+        else
+            this.substractPoint();
+    }
+
+    addPoint() {
+        this.setState({points: this.state.points + 1, backgroundColor: '#00ff00'});
+        setTimeout(() => this.setState({backgroundColor: '#F5FCFF'}), 400);
+    }
+
+    substractPoint() {
+        this.setState({points: this.state.points - 1, backgroundColor: '#ff0000'});
+        setTimeout(() => this.setState({backgroundColor: '#F5FCFF'}), 400);
+    }
+
+    getAudioTimeString(playSeconds) {
+        const min = parseInt(playSeconds % (60 * 60) / 60);
+        const sec = parseInt(playSeconds % 60);
+        return (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec);
+    }
+
+    getContainerStyles() {
+        return {
+            ...{backgroundColor: this.state.backgroundColor}, ...styles.container
+        }
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    }
 });
