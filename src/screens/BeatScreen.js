@@ -3,7 +3,7 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Sound from "react-native-sound";
 
-export default class BeatComponent extends Component {
+export default class BeatScreen extends Component {
     static navigationOptions = {
         title: 'Beat',
         tabBarIcon: () =>(<Icon name="music" size={30}/>)
@@ -38,9 +38,18 @@ export default class BeatComponent extends Component {
                 <Text>{currentTimeString}</Text>
                 <Text>{this.state.beats}</Text>
                 <Text>{this.state.points}</Text>
+                <View style={{flexDirection: 'row',
+                                justifyContent: 'space-between'
+                                }}>
+                    <View style={{padding:20}}>
+                    <Button style={{flex: 1
+                    }} onPress={this.beatItCurts} title='Curts'/>
+                    </View>
+                    <View style={{padding:20}}><Button style={{flex: 1
+                    }} onPress={this.beatItLlargs} title='Llargs'/>
+                    </View>
+                </View>
 
-                <Button onPress={this.beatItCurts} title='Curts'/>
-                <Button onPress={this.beatItLlargs} title='Llargs'/>
                 <Text> Curts: {this.state.curtsCount}</Text>
                 <Text> Llargs: {this.state.llargsCount}</Text>
             </View>
