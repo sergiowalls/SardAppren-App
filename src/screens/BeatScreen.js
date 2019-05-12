@@ -6,13 +6,19 @@ import Sound from "react-native-sound";
 export default class BeatScreen extends Component {
     static navigationOptions = {
         title: 'Beat',
-        tabBarIcon: () =>(<Icon name="music" size={30}/>)
+        tabBarIcon: () => (<Icon name="music" size={30}/>)
     };
 
     constructor(props: P, context: any) {
         super(props, context);
-        this.state = {playSeconds: 0, beats: 0, points: 0, backgroundColor: '#F5FCFF', curtsCount: 0, llargsCount: 0};
-
+        this.state = {
+            playSeconds: 0,
+            beats: 0,
+            points: 0,
+            backgroundColor: '#F5FCFF',
+            curtsCount: 0,
+            llargsCount: 0
+        };
 
         this.stopCounting = this.stopCounting.bind(this);
         this.beatIt = this.beatIt.bind(this);
@@ -63,12 +69,14 @@ export default class BeatScreen extends Component {
                 this.countBeats(seconds);
                 this.setState({playSeconds: seconds})
             })
-        }, 100);
+        }, 50);
     }
 
     countBeats(seconds) {
-        const beats = Math.max(Math.trunc((seconds - 5.219) / (53 / 60)), 0);
-        this.setState({beats: beats})
+        const startSecond = seconds - 5.219;
+        let beatsPerSecond = 1.12724;
+        const beats = startSecond > 0 ? Math.trunc(startSecond / beatsPerSecond) + 1 : 0;
+        this.setState({beats})
     }
 
     stopCounting() {
@@ -76,11 +84,13 @@ export default class BeatScreen extends Component {
     }
 
     beatIt() {
-        let number = this.state.playSeconds - 5.219;
-        const nearestMultiple = Math.ceil(number / (53 / 60)) * (53 / 60);
+        let beat = this.state.playSeconds - 5.219;
+        let beatsPerSecond = 1.12724;
+        const nextMultiple = Math.ceil(beat / beatsPerSecond) * beatsPerSecond;
+        const previousMultiple = Math.floor(beat / beatsPerSecond) * beatsPerSecond;
 
-        let difference = Math.abs(number - nearestMultiple);
-        if (difference < 0.5)
+        let difference = Math.min(beat - previousMultiple, nextMultiple - beat);
+        if (difference < 0.2 / beatsPerSecond)
             this.addPoint();
         else
             this.substractPoint();
