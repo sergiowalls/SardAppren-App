@@ -14,7 +14,7 @@ export default class RankingScreen extends Component {
             sardanasList: []
         };
 
-
+        this.renderItem = this.renderItem.bind(this)
     }
 
     componentWillMount() {
@@ -33,6 +33,7 @@ export default class RankingScreen extends Component {
     }
 
     renderItem({item}) {
+        const { navigation } = this.props
         return (
             <View>
                 <View style={{
@@ -45,8 +46,10 @@ export default class RankingScreen extends Component {
                     <View style={{justifyContent: 'center', flex: 1}}><Text
                         style={styles.item}>{item.title}</Text></View>
                     <View style={{padding: 5, alignItems: 'center', justifyContent: 'center'}}><Button title="contar"/></View>
-                    <View style={{padding: 5, alignItems: 'center', justifyContent: 'center'}}><Button
-                        title="repartir"/></View>
+
+                    <View style={{padding: 5, alignItems: 'center', justifyContent: 'center'}}>
+                        <Button title="repartir" onPress={()=>navigation.navigate('BeatScreen')}/>
+                    </View>
 
 
                 </View>
