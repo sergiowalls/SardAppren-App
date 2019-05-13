@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class ProfileScreen extends Component {
@@ -10,7 +10,9 @@ export default class ProfileScreen extends Component {
 
     render() {
         return (
-            <View> </View>
+            <View>
+                <Text>Benvingut</Text>
+            </View>
         );
     }
 
