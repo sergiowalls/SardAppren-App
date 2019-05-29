@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 export default class ProfileScreen extends Component {
     static navigationOptions = {
-        title: 'Profile',
+        title: 'Perfil',
         tabBarIcon: () =>(<Icon name="user" size={30}/>)
     };
 

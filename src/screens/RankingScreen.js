@@ -11,29 +11,13 @@ export default class RankingScreen extends Component {
     constructor(props: P, context: any) {
         super(props, context);
         this.state = {
-            agrupations_list: [],
-            users_list: []
+            usersList: []
         };
 
         this.renderItem = this.renderItem.bind(this);
-        this.renderItem2 = this.renderItem2.bind(this)
     }
 
     componentWillMount() {
-        let affiliationsRankingList = [
-            {
-                name: 'Mare Nostrum',
-                points: 5154
-            },
-            {
-                name: 'Violetes del Bosc',
-                points: 2254
-            },
-            {
-                name: 'Dansaires del Penedès',
-                points: 1234
-            }
-        ];
         let usersRankingList = [
             {
                 name: 'Mario Albo',
@@ -49,34 +33,12 @@ export default class RankingScreen extends Component {
             }
         ];
         setTimeout(() => {
-            this.setState({agrupations_list: affiliationsRankingList});
-            this.setState({users_list: usersRankingList})
+            this.setState({usersList: usersRankingList})
         }, 100)
         // fetch('url').then((data)=>{this.setState((sardanasList:data.list))})
     }
 
     renderItem({item}) {
-        return (
-            <View>
-                <View style={{
-                    flexDirection: 'row',
-                    paddingTop: 10,
-                    paddingBottom: 10,
-                    paddingLeft: 15,
-                    paddingRight: 15
-                }}>
-                    <View style={{justifyContent: 'center', flex: 1}}>
-                        <Text style={styles.item}>{item.points} {item.name}</Text></View>
-
-                </View>
-                <View style={{height: 1, backgroundColor: 'rgba(0,0,0,0.2)', marginRight: 10, marginLeft: 10}}/>
-            </View>
-
-
-        )
-    }
-
-    renderItem2({item}) {
         return (
             <View>
                 <View style={{
@@ -95,8 +57,6 @@ export default class RankingScreen extends Component {
                 </View>
                 <View style={{height: 1, backgroundColor: 'rgba(0,0,0,0.2)', marginRight: 10, marginLeft: 10}}/>
             </View>
-
-
         )
     }
 
@@ -104,18 +64,11 @@ export default class RankingScreen extends Component {
         return (
             <View style={styles.container}>
                 <FlatList
-                    data={this.state.agrupations_list}
+                    data={this.state.usersList}
                     renderItem={this.renderItem}
                     keyExtractor={(item, index) => `id_${index}`}
                 />
-                <FlatList
-                    data={this.state.users_list}
-                    renderItem={this.renderItem2}
-                    keyExtractor={(item, index) => `id_${index}`}
-                />
             </View>
-
-
         );
     }
 

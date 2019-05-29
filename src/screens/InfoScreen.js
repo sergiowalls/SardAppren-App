@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Entypo';
 
 export default class InfoScreen extends Component {
     static navigationOptions = {
-        title: 'Info',
+        title: 'Informació',
         tabBarIcon: () => (<Icon name="info" size={30}/>)
     };
 
