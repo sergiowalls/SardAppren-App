@@ -33,7 +33,7 @@ export default class BeatScreen extends Component {
                 console.log(error);
             this.playSound(sound);
         });
-
+        this.setState({sound: sound})
     }
 
     render() {
@@ -60,6 +60,11 @@ export default class BeatScreen extends Component {
                 <Text> Llargs: {this.state.llargsCount}</Text>
             </View>
         );
+    }
+
+    componentWillUnmount(): void {
+        this.state.sound.stop();
+        this.stopCounting();
     }
 
     playSound(sound) {
