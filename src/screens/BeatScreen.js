@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import Sound from "react-native-sound";
 
 export default class BeatScreen extends Component {
-    static navigationOptions = {
-        title: 'Beat',
-        tabBarIcon: () => (<Icon name="music" size={30}/>)
-    };
 
     constructor(props: P, context: any) {
         super(props, context);

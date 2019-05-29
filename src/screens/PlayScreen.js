@@ -74,7 +74,7 @@ export default class PlayScreen extends Component {
                     <View style={{padding: 5, alignItems: 'center', justifyContent: 'center'}}>
                         <Button title="Tutorial comptar" onPress={() => {
                             this.setModalInvisible();
-                            navigation.navigate('BeatScreen')
+                            navigation.navigate('BeatTutorialScreen')
                         }}/>
                     </View>
                     <View style={{padding: 5, alignItems: 'center', justifyContent: 'center'}}>
