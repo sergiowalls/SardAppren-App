@@ -36,23 +36,26 @@ export default class BeatScreen extends Component {
 
         return (
             <View style={this.getContainerStyles()}>
-                <Text>{currentTimeString}</Text>
-                <Text>{this.state.beats}</Text>
-                <Text>{this.state.points}</Text>
-                <View style={{flexDirection: 'row',
-                                justifyContent: 'space-between'
-                                }}>
-                    <View style={{padding:20}}>
-                    <Button style={{flex: 1
-                    }} onPress={this.beatItCurts} title='Curts'/>
+                <Text style={{fontSize: 20}}>{currentTimeString}</Text>
+                <Text style={{fontSize: 20}}>Puntuació: {this.state.points}</Text>
+                <View style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between'
+                }}>
+                    <View style={{padding: 20}}>
+                        <Button style={{
+                            flex: 1
+                        }} onPress={this.beatItCurts} title='Curts'/>
                     </View>
-                    <View style={{padding:20}}><Button style={{flex: 1
-                    }} onPress={this.beatItLlargs} title='Llargs'/>
+                    <View style={{padding: 20}}>
+                        <Button style={{
+                            flex: 1
+                        }} onPress={this.beatItLlargs} title='Llargs' color="#ff8033"/>
                     </View>
                 </View>
 
-                <Text> Curts: {this.state.curtsCount}</Text>
-                <Text> Llargs: {this.state.llargsCount}</Text>
+                <Text style={{fontSize: 20}}> Curts: {this.state.curtsCount}</Text>
+                <Text style={{fontSize: 20}}> Llargs: {this.state.llargsCount}</Text>
             </View>
         );
     }
@@ -69,7 +72,7 @@ export default class BeatScreen extends Component {
                 this.countBeats(seconds);
                 this.setState({playSeconds: seconds})
             })
-        }, 50);
+        }, 20);
     }
 
     countBeats(seconds) {

@@ -7,8 +7,6 @@ export default class BeatTutorialScreen extends BeatScreen {
 
     constructor(props: P, context: *) {
         super(props, context);
-
-        this.state.beats
     }
 
     render() {
@@ -16,8 +14,8 @@ export default class BeatTutorialScreen extends BeatScreen {
 
         return (
             <View style={this.getContainerStyles()}>
-                <Text>{currentTimeString}</Text>
-                <Text>{this.state.beats}</Text>
+                <Text style={{fontSize: 20}}>{currentTimeString}</Text>
+                <Text style={{fontSize: 20}}>Compassos: {this.state.beats}</Text>
             </View>
         );
     }

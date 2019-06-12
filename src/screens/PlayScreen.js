@@ -30,10 +30,7 @@ export default class PlayScreen extends Component {
             {title: 'Sardana 5'},
             {title: 'Sardana 6'}
         ];
-        setTimeout(() => {
-            this.setState({sardanasList: list})
-        }, 1500)
-        // fetch('url').then((data)=>{this.setState((sardanasList:data.list))})
+        this.setState({sardanasList: list})
     }
 
     renderItem({item}) {
