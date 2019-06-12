@@ -32,7 +32,7 @@ export default class DistributeScreen extends BeatScreen {
                 </View>
                 <View   style={{ flexDirection: 'row',  justifyContent: 'center'}} >
 
-                        <View  style={{ flexDirection: 'column', justifyContent: 'space-between'}} >
+                        <View  style={{  flexDirection: 'column', justifyContent: 'space-between'}} >
                             <TouchableOpacity style = { styles.buttonView}   onPress={this.beatItCurts}>
                                 <Text>2</Text>
                             </TouchableOpacity>
@@ -92,9 +92,10 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
     buttonView: {
+
         alignItems: 'center',
         justifyContent:'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#DDDDDD',
         width:100,
         height:100,
         margin:10

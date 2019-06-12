@@ -13,16 +13,7 @@ export default class ProfileScreen extends Component {
             <View  >
                 <Text style={styles.welcome}>SardAppren</Text>
                 <Text>Benvingut</Text>
-                <View style={{ flex: 1, alignItems: 'stretch' }}>
-                    <View style={{ height: 60, backgroundColor: 'red' }} >
-                        <Button  title='    2+3    ' color='red'/>
-                    </View>
 
-                        <Button style={{ height: 60, backgroundColor: 'black' }} title='2+3+6'    />
-
-                    <View style={{ height: 60, backgroundColor: 'green' }} />
-                    <View style={{ height: 60, backgroundColor: 'blue' }} />
-                </View>
             </View>
         );
     }
