@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
 
 export default class ProfileScreen extends Component {
@@ -10,9 +10,19 @@ export default class ProfileScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View  >
                 <Text style={styles.welcome}>SardAppren</Text>
                 <Text>Benvingut</Text>
+                <View style={{ flex: 1, alignItems: 'stretch' }}>
+                    <View style={{ height: 60, backgroundColor: 'red' }} >
+                        <Button  title='    2+3    ' color='red'/>
+                    </View>
+
+                        <Button style={{ height: 60, backgroundColor: 'black' }} title='2+3+6'    />
+
+                    <View style={{ height: 60, backgroundColor: 'green' }} />
+                    <View style={{ height: 60, backgroundColor: 'blue' }} />
+                </View>
             </View>
         );
     }

@@ -6,6 +6,7 @@ import InfoScreen from "./src/screens/InfoScreen";
 import RankingScreen from "./src/screens/RankingScreen";
 import PlayScreen from "./src/screens/PlayScreen";
 import BeatTutorialScreen from "./src/screens/BeatTutorialScreen";
+import DistributeScreen from "./src/screens/DistributeScreen";
 
 const MainNavigator = createBottomTabNavigator({
     Info: {screen: InfoScreen},
@@ -17,7 +18,8 @@ const MainNavigator = createBottomTabNavigator({
 const App = createAppContainer(createStackNavigator({
     MainNavigator,
     BeatScreen,
-    BeatTutorialScreen
+    BeatTutorialScreen,
+    DistributeScreen
 }, {headerMode: "none"}));
 
 export default App;

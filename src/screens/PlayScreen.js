@@ -81,7 +81,10 @@ export default class PlayScreen extends Component {
                         }}/>
                     </View>
                     <View style={{padding: 5, alignItems: 'center', justifyContent: 'center'}}>
-                        <Button title="Repartir"/>
+                        <Button title="Repartir" onPress={() => {
+                            this.setModalInvisible();
+                            navigation.navigate('DistributeScreen')
+                        }}/>
                     </View>
                 </Modal>
             </View>
